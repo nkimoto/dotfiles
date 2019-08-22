@@ -1,4 +1,17 @@
 # settings
+
+## .config
+
+fish config file
+
+Installation
+```
+$ curl -L https://get.oh-my.fish | fish
+$ omf install peco
+$ omf install z
+$ omf install agnoster
+```
+
 ## .tmux.conf
 
 Read conf 
