@@ -179,6 +179,9 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 
+"editorconfig: 人間関係を崩さないためのEditorConfig
+NeoBundle 'editorconfig/editorconfig-vim'
+
 "NeoBundle 'https://bitbucket.org/kovisoft/slimv'
 
 call neobundle#end()
