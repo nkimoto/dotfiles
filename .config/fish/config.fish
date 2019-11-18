@@ -23,21 +23,8 @@ function fish_user_key_bindings
   bind \cr peco_select_history # Bind for peco select history to Ctrl+R
 end
 
-# export path
-set PATH /usr/local/bin /usr/sbin $PATH
-
 # set z script path
 set -gx Z_SCRIPT_PATH /usr/local/bin/z.sh
 
-# set encoding
-set -gx LANG ja_JP.UTF-8
-set -gx LANGUAGE ja_JP.UTF-8
-
-# set docker host
-set -gx DOCKER_HOST tcp://0.0.0.0:2375
-
-
 # set pyenv
-set -gx PYENV_ROOT "$HOME/.pyenv"
-set -x PATH $PATH "$PYENV_ROOT/bin"
-status --is-interactive; and . (pyenv init - | psub)
+set -q PYENV_ROOT; or set -gx PYENV_ROOT $HOME/.pyenv
