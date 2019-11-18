@@ -34,3 +34,17 @@ tmux source-file ~/.tmux.conf
 1. Start up vim
 
         $ vim
+
+## Others
+### pyenv
+`fish.config`
+```fish.config
+set -q PYENV_ROOT; or set -gx PYENV_ROOT $HOME/.pyenv
+```
+
+### nodebrew
+```
+curl -L git.io/nodebrew | perl - setup
+set -U fish_user_paths /home/kimoton/.nodebrew/current/bin $fish_user_paths
+```
+
