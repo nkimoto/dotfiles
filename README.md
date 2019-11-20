@@ -48,3 +48,10 @@ curl -L git.io/nodebrew | perl - setup
 set -U fish_user_paths /home/kimoton/.nodebrew/current/bin $fish_user_paths
 ```
 
+
+### Jupyterlab extensions
+```
+jupyter labextension install jupyterlab_vim
+jupyter labextension install @jupyterlab/toc
+jupyter labextension install @lckr/jupyterlab_variableinspector
+```
