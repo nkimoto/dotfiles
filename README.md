@@ -48,6 +48,10 @@ curl -L git.io/nodebrew | perl - setup
 set -U fish_user_paths /home/kimoton/.nodebrew/current/bin $fish_user_paths
 ```
 
+### anaconda
+```
+set -U fish_user_paths ~/anaconda/bin $fish_user_paths
+```
 
 ### Jupyterlab extensions
 ```
