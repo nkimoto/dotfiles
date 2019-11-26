@@ -1,8 +1,8 @@
 
 # encoding
-set LANG ja_JP.UTF-8
+set LANG C.UTF-8
 set LANGUAGE ja_JP.UTF-8
-set LC_ALL ja_JP.UTF-8
+set LC_ALL C.UTF-8
 set LC_MESSAGES ja_JP.UTF-8
 
 # set alias
@@ -28,3 +28,6 @@ set -gx Z_SCRIPT_PATH /usr/local/bin/z.sh
 
 # set pyenv
 set -q PYENV_ROOT; or set -gx PYENV_ROOT $HOME/.pyenv
+
+# set anaconda
+# source (conda info --root)/etc/fish/conf.d/conda.fish
