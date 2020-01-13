@@ -1,4 +1,3 @@
-" ファイルを上書きする前にバックアップを作ることを無効化
 set nowritebackup
 " ファイルを上書きする前にバックアップを作ることを無効化
 set nobackup
@@ -182,6 +181,9 @@ NeoBundle 'Shougo/neosnippet-snippets'
 "editorconfig: 人間関係を崩さないためのEditorConfig
 NeoBundle 'editorconfig/editorconfig-vim'
 
+"HTML support
+NeoBundle 'surround.vim'
+
 "NeoBundle 'https://bitbucket.org/kovisoft/slimv'
 
 call neobundle#end()
@@ -191,5 +193,3 @@ filetype indent on
 syntax on
 
 NeoBundleCheck
-
-
