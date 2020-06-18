@@ -11,7 +11,6 @@ alias gc 'git commit -v'
 alias gc! 'git commit -v --amend'
 
 alias vi '/usr/bin/vim'
-alias rm 'rmtrash'
 alias ll 'ls --human-readable -l'
 
 alias pull 'git pull'
@@ -21,6 +20,5 @@ alias gs 'git status'
 alias gd 'git diff'
 alias gl "git log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'"
 
-alias rm 'rmtrash'
 
 
