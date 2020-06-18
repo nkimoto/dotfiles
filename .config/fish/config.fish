@@ -31,3 +31,6 @@ set -q PYENV_ROOT; or set -gx PYENV_ROOT $HOME/.pyenv
 
 # set anaconda
 # source (conda info --root)/etc/fish/conf.d/conda.fish
+
+# Pipenv
+set -x PIPENV_VENV_IN_PROJECT 1
