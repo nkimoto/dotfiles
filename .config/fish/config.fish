@@ -34,3 +34,8 @@ set -q PYENV_ROOT; or set -gx PYENV_ROOT $HOME/.pyenv
 
 # Pipenv
 set -x PIPENV_VENV_IN_PROJECT 1
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /home/kimoton/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<

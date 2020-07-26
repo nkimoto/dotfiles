@@ -1,4 +1,4 @@
-# settings
+# dotfiles
 
 ## .config
 
@@ -47,6 +47,7 @@ set -q PYENV_ROOT; or set -gx PYENV_ROOT $HOME/.pyenv
 curl -L git.io/nodebrew | perl - setup
 set -U fish_user_paths /home/kimoton/.nodebrew/current/bin $fish_user_paths
 ```
+<<<<<<< Updated upstream
 
 ### anaconda
 ```
@@ -59,3 +60,5 @@ jupyter labextension install jupyterlab_vim
 jupyter labextension install @jupyterlab/toc
 jupyter labextension install @lckr/jupyterlab_variableinspector
 ```
+=======
+>>>>>>> Stashed changes

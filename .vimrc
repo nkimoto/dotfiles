@@ -3,12 +3,21 @@ set nowritebackup
 set nobackup
 " vim の矩形選択で文字が無くても右へ進める
 set virtualedit=block
-" 挿入モードでバックスペースで削除できるようにする
-set backspace=indent,eol,start
 " 全角文字専用の設定
 set ambiwidth=double
 " wildmenuオプションを有効(vimバーからファイルを選択できる)
 set wildmenu
+
+"----------------------------------------
+" キーマップ
+"----------------------------------------
+" leader keyをカンマに変更
+let mapleader = ','
+noremap <leader>w :wq<cr>
+" セミコロン(;) → コロン(:)
+nnoremap ; :
+vnoremap ; :
+
 
 "----------------------------------------
 " 検索
@@ -29,7 +38,6 @@ set hlsearch
 "----------------------------------------
 " 表示するMAXの文字数
 set textwidth=80
-
 " エラーメッセージの表示時にビープを鳴らさない
 set noerrorbells
 " Windowsでパスの区切り文字をスラッシュで扱う
@@ -54,14 +62,8 @@ set listchars=tab:^\ ,trail:~
 set history=10000
 " コメントの色を水色
 hi Comment ctermfg=3
-" 入力モードでTabキー押下時に半角スペースを挿入
-set expandtab
-" インデント幅
-set shiftwidth=4
 " タブキー押下時に挿入される文字幅を指定
 set softtabstop=4
-" ファイル内にあるタブ文字の表示幅
-set tabstop=4
 " ツールバーを非表示にする
 set guioptions-=T
 " yでコピーした時にクリップボードに入る
@@ -80,8 +82,10 @@ set noswapfile
 set nofoldenable
 " タイトルを表示
 set title
-" 行番号の表示
-set number
+" 端末が広い場合、行番号の表示
+if &co > 80
+    set number
+endif
 " ヤンクでクリップボードにコピー
 set clipboard=unnamed,autoselect
 " Escの2回押しでハイライト消去
@@ -129,67 +133,96 @@ if has("autocmd")
   augroup END
 endif
 
-
-let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+" Python linters
+let g:syntastic_python_checkers = ['black'] " 'pyflakes', 'pep8']
 
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
 filetype off
 
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
 
-  set runtimepath+=~/.vim/bundle/neobundle.vim
+
+" ファイルタイプごとのインデントを有効化
+filetype plugin indent on
+" ファイル内にあるタブ文字の表示幅
+set tabstop=4
+" 入力モードでTabキー押下時に半角スペースを挿入
+set expandtab
+" 自動インデント幅
+set shiftwidth=4
+" 挿入モードでバックスペースで削除できるようにする
+set backspace=indent,eol,start
+" カラースキーマを変更
+" colscheme murphy
+
+" Swapファイルを格納するディレクトリを設定
+set directory=$HOME/.vim/swap//
+" すべてのファイルについて永続的なUndoを作成
+set undofile
+if !isdirectory(expand("$HOME/.vim/undodir"))
+    call mkdir(expand("$HOME/.vim/undodir"), "p")
 endif
+set undodir=$HOME/.vim/undodir
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+" プラグインをロードする
+" packloadall
+" プラグイン用にヘルプファイルをロードする
+" silent! helptag ALL
 
-" originalrepos on github
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc', {
-  \ 'build' : {
-    \ 'windows' : 'make -f make_mingw32.mak',
-    \ 'cygwin' : 'make -f make_cygwin.mak',
-    \ 'mac' : 'make -f make_mac.mak',
-    \ 'unix' : 'make -f make_unix.mak',
-  \ },
-  \ }
-NeoBundle 'VimClojure'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'jpalardy/vim-slime'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 't9md/vim-textmanip'
+" 起動時にブックマーク表示
+" let NEDTreeShowBoolmarks = 1
 
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'tomasr/molokai'
+au BufNewFile,BufRead Snakefile set syntax=snakemake
+au BufNewFile,BufRead *.smk set syntax=snakemake
+set t_RV=
 
-NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
 
+"----------------------------------------
+" vim-plugの設定
+"----------------------------------------
+
+" Install vim-plug if it's not already installed (Unix-only).
+" if empty(glob('~/.vim/autoload/plug.vim'))
+"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs 
+"     \ https://raw.github.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
+
+call plug#begin()
+Plug 'scrooloose/syntastic'
+Plug 'Shougo/vimshell'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neocomplcache'
+Plug 'Shougo/neosnippet'
+Plug 'jpalardy/vim-slime'
+Plug 'Shougo/vimfiler.vim'
+Plug 'itchyny/lightline.vim'
+Plug 't9md/vim-textmanip'
+Plug 'Shougo/unite.vim'
+Plug 'tomasr/molokai'
+Plug 'Shougo/neocomplcache'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'tpope/vim-unimpaired'" bufferのマッピング
 "editorconfig: 人間関係を崩さないためのEditorConfig
-NeoBundle 'editorconfig/editorconfig-vim'
+Plug 'editorconfig/editorconfig-vim'
+let g:plug_timeout = 300
+Plug 'ycm-core/YouCompleteMe', {'do': './install.py'}
+" アンドゥーツリー
+if has('python3')
+    let g:gundo_prefer_python3 = 1
+endif
+Plug 'sjl/gundo.vim'
 
-"HTML support
-NeoBundle 'surround.vim'
+" gitと統合
+Plug 'tpope/vim-fugitive'
 
-"NeoBundle 'https://bitbucket.org/kovisoft/slimv'
+" Color scheme
+Plug 'NLKNguyen/papercolor-theme'
+call plug#end()
 
-call neobundle#end()
-
-filetype plugin indent on     " required!
-filetype indent on
-syntax on
-
-NeoBundleCheck
+" カラースキーマを選択
+set background=dark
+:colorscheme PaperColor
