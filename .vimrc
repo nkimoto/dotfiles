@@ -222,6 +222,19 @@ Plug 'tpope/vim-fugitive'
 
 " Color scheme
 Plug 'NLKNguyen/papercolor-theme'
+
+" julia-vim
+Plug 'JuliaEditorSupport/julia-vim'
+"let g:latex_to_unicode_auto = 1
+
+" Markdown preview
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'previm/previm'
+let g:vim_markdown_folding_disabled = 1
+let g:previm_enable_realtime = 1
+let g:previm_open_cmd = 'open -a Google\ Chrome'
+
 call plug#end()
 
 " カラースキーマを選択
