@@ -28,6 +28,8 @@ set -gx Z_SCRIPT_PATH /usr/local/bin/z.sh
 
 # set pyenv
 set -q PYENV_ROOT; or set -gx PYENV_ROOT $HOME/.pyenv
+fish_add_path $HOME/.pyenv/shims
+fish_add_path $HOME/.pyenv/bin
 
 # set anaconda
 # source (conda info --root)/etc/fish/conf.d/conda.fish
@@ -35,7 +37,15 @@ set -q PYENV_ROOT; or set -gx PYENV_ROOT $HOME/.pyenv
 # Pipenv
 set -x PIPENV_VENV_IN_PROJECT 1
 
+# Golang
+set -x GOPATH $HOME/go
+fish_add_path $GOPATH/bin
+
+# yarn
+fish_add_path $HOME/.yarn/bin
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 eval /home/kimoton/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
+

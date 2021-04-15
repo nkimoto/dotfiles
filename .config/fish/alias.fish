@@ -5,7 +5,6 @@ alias mv 'mv -i'
 alias rm 'rm -i'
 alias cp 'cp -i'
 alias sc 'screen'
-alias ps 'ps --sort=start_time'shrc
 
 alias g 'git'
 
