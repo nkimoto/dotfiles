@@ -227,6 +227,9 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'JuliaEditorSupport/julia-vim'
 "let g:latex_to_unicode_auto = 1
 
+" JuliaFormatter
+Plug 'kdheepak/JuliaFormatter.vim'
+
 " Markdown preview
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
