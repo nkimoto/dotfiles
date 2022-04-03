@@ -14,8 +14,9 @@ set -gx OMF_PATH $HOME/.local/share/omf
 # Load oh-my-fish configuration.
 source $OMF_PATH/init.fish
 
-# Use agoster theme
-set fish_theme agnoster
+# Use bobthefish theme
+set fish_theme bobthefish
+set -g theme_newline_cursor yes
 
 # set peco find history
 set fish_plugins theme peco
@@ -48,4 +49,3 @@ fish_add_path $HOME/.yarn/bin
 # !! Contents within this block are managed by 'conda init' !!
 eval /home/kimoton/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
-
