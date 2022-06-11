@@ -38,7 +38,7 @@ set hlsearch
 " 表示設定
 "----------------------------------------
 " 表示するMAXの文字数
-set textwidth=80
+" set textwidth=80
 " エラーメッセージの表示時にビープを鳴らさない
 set noerrorbells
 " Windowsでパスの区切り文字をスラッシュで扱う
@@ -135,7 +135,9 @@ if has("autocmd")
 endif
 
 " Python linters
-let g:syntastic_python_checkers = ['black'] " 'pyflakes', 'pep8']
+let g:syntastic_python_checkers = ['flake8', 'mypy'] " 'pyflakes','pep8']
+autocmd BufWritePre *.py execute ':Black'
+let g:black_linelength = 79
 
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
@@ -223,6 +225,9 @@ Plug 'tpope/vim-fugitive'
 
 " Color scheme
 Plug 'NLKNguyen/papercolor-theme'
+
+" Python black lint
+Plug 'psf/black', { 'branch': 'main' }
 
 " julia-vim
 Plug 'JuliaEditorSupport/julia-vim'
