@@ -88,7 +88,7 @@ if &co > 80
     set number
 endif
 " ヤンクでクリップボードにコピー
-set clipboard=unnamed,autoselect
+set clipboard=unnamedplus,autoselect
 " Escの2回押しでハイライト消去
 nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
 " シンタックスハイライト
@@ -136,6 +136,7 @@ endif
 
 " Python linters
 let g:syntastic_python_checkers = ['flake8', 'mypy'] " 'pyflakes','pep8']
+let g:syntastic_python_flake8_args = '--ignore="E203, W503"'
 autocmd BufWritePre *.py execute ':Black'
 let g:black_linelength = 79
 
@@ -228,6 +229,9 @@ Plug 'NLKNguyen/papercolor-theme'
 
 " Python black lint
 Plug 'psf/black', { 'branch': 'main' }
+
+" Python isort
+Plug 'fisadev/vim-isort'
 
 " julia-vim
 Plug 'JuliaEditorSupport/julia-vim'
